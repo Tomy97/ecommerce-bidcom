@@ -38,7 +38,6 @@ export class DummyJsonProductRepository implements ProductRepository {
     return toProductDetail(dto);
   }
 
-  /** DummyJson quirk: el SKU codifica el id en su último segmento numérico. */
   private extractDummyJsonId(sku: string): number | null {
     const last = sku.split("-").at(-1);
     if (!last) return null;

@@ -1,3 +1,4 @@
+"use client";
 import { SearchIcon } from "lucide-react";
 export const SearchBar = ({ defaultValue = "" }: { defaultValue?: string }) => (
   <form
@@ -5,6 +6,7 @@ export const SearchBar = ({ defaultValue = "" }: { defaultValue?: string }) => (
     className="flex flex-1 items-center bg-white rounded px-3 py-1.5"
   >
     <input
+      type="search"
       name="s"
       defaultValue={defaultValue}
       placeholder="¿Qué estás buscando?"
