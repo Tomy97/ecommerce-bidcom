@@ -2,8 +2,7 @@
 
 Aplicación de ecommerce desarrollada como parte de la evaluación técnica de Bidcom. Permite buscar productos, ver resultados filtrados por término o categoría, y acceder al detalle de cada producto.
 
-🔗 **Deploy:** [https://ecommerce-bidcom.vercel.app](https://ecommerce-bidcom.vercel.app)  
-📁 **Repositorio:** [https://github.com/Tomy97/ecommerce-bidcom](https://github.com/Tomy97/ecommerce-bidcom)
+🔗 **Deploy:** [https://ecommerce-bidcom.vercel.app](https://ecommerce-bidcom.vercel.app)
 
 ---
 
