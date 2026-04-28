@@ -3,6 +3,7 @@ import { SearchIcon } from "lucide-react";
 export const SearchBar = ({ defaultValue = "" }: { defaultValue?: string }) => (
   <form
     action="/search"
+    name="search-form"
     className="flex flex-1 items-center bg-white rounded px-3 py-1.5"
   >
     <input

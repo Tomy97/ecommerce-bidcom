@@ -1,3 +1,4 @@
+import { extractIdFromSku } from "@/shared/utils/extractIdFromSku";
 import type { Product, ProductDetail } from "../../domain/product.entity";
 import type { ProductRepository } from "../../domain/product.repository";
 import type {
@@ -27,7 +28,7 @@ export class DummyJsonProductRepository implements ProductRepository {
   }
 
   async findBySku(sku: string): Promise<ProductDetail | null> {
-    const id = this.extractDummyJsonId(sku);
+    const id = extractIdFromSku(sku);
     if (id === null) return null;
 
     const res = await fetch(`${this.URL_BASE}/products/${id}`);
@@ -36,12 +37,5 @@ export class DummyJsonProductRepository implements ProductRepository {
     const dto: DummyjsonProductDetailDto = await res.json();
     if (dto.sku !== sku) return null;
     return toProductDetail(dto);
-  }
-
-  private extractDummyJsonId(sku: string): number | null {
-    const last = sku.split("-").at(-1);
-    if (!last) return null;
-    const id = Number(last);
-    return Number.isInteger(id) && id > 0 ? id : null;
   }
 }
