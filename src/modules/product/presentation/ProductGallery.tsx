@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 
 export const ProductGallery = ({
@@ -7,12 +9,13 @@ export const ProductGallery = ({
   images: string[];
   title: string;
 }) => {
-  const [main, ...rest] = images;
+  const [mainIndex, setMainIndex] = useState(0);
+
   return (
     <div className="space-y-4">
       <div className="aspect-square w-full overflow-hidden rounded-2xl bg-gray-100">
         <Image
-          src={main}
+          src={images[mainIndex]}
           alt={title}
           width={800}
           height={800}
@@ -20,21 +23,26 @@ export const ProductGallery = ({
           priority
         />
       </div>
-      {rest.length > 0 && (
+      {images.length > 1 && (
         <div className="grid grid-cols-4 gap-3">
-          {rest.slice(0, 4).map((src, i) => (
-            <div
+          {images.slice(0, 4).map((src, i) => (
+            <button
               key={src}
-              className="aspect-square overflow-hidden rounded-lg bg-gray-100"
+              onClick={() => setMainIndex(i)}
+              className={`aspect-square overflow-hidden rounded-lg bg-gray-100 ring-offset-2 transition hover:ring-2 hover:ring-[#0000FF] focus-visible:ring-2 focus-visible:ring-[#0000FF] ${
+                i === mainIndex ? "ring-2 ring-[#0000FF]" : ""
+              }`}
+              aria-label={`Ver imagen ${i + 1} de ${title}`}
+              aria-current={i === mainIndex}
             >
               <Image
                 src={src}
-                alt={`${title} ${i + 2}`}
+                alt={`${title} ${i + 1}`}
                 width={200}
                 height={200}
                 className="h-full w-full object-cover"
               />
-            </div>
+            </button>
           ))}
         </div>
       )}
